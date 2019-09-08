@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.RegisterActivity">
+    tools:context=".Activities.RegisterActivity"
+    android:background="#ffffff">
+
 
     <EditText
+        android:background="@drawable/teg_edittext_style"
         android:hint="ConfirmPassword"
         android:id="@+id/regPassword2"
         android:layout_width="wrap_content"
@@ -22,7 +25,7 @@
         android:layout_height="90dp"
         android:src="@drawable/adduser"
         tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="120dp" />
+        tools:layout_editor_absoluteY="91dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -32,6 +35,7 @@
         app:layout_constraintGuide_begin="307dp" />
 
     <EditText
+        android:background="@drawable/teg_edittext_style"
         android:hint="Nume"
         android:id="@+id/regName"
         android:layout_width="wrap_content"
@@ -42,6 +46,7 @@
         tools:layout_editor_absoluteY="227dp" />
 
     <EditText
+        android:background="@drawable/teg_edittext_style"
         android:hint="E-Mail"
         android:id="@+id/regMail"
         android:layout_width="wrap_content"
@@ -52,6 +57,7 @@
         tools:layout_editor_absoluteY="284dp" />
 
     <EditText
+        android:background="@drawable/teg_edittext_style"
         android:hint="Password"
         android:id="@+id/regPassword"
         android:layout_width="wrap_content"
@@ -62,6 +68,7 @@
         tools:layout_editor_absoluteY="343dp" />
 
     <Button
+        android:background="@drawable/reg_button_style"
         android:id="@+id/button"
         android:layout_width="159dp"
         android:layout_height="65dp"
