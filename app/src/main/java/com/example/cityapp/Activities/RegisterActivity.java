@@ -12,10 +12,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.cityapp.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
     ImageView ImgUserPhoto;
@@ -23,11 +27,70 @@ public class RegisterActivity extends AppCompatActivity {
     static int REQUESTCODE = 1;
     Uri pickedImgURI ;
 
+
+    private EditText userEmail,userPassword,userPassword2,userName;
+    private ProgressBar loadingProgress;
+    private Button regButton;
+
+    private FirebaseAuth mAuth
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         //inu views
+
+        userEmail = findViewById(R.id.regMail);
+        userPassword = findViewById(R.id.regPassword);
+        userPassword2 = findViewById(R.id.regPassword2);
+        userName= findViewById(R.id.regName);
+        loadingProgress = findViewById(R.id.regProcessBar);
+        loadingProgress = setProgressBarVisibility(View.INVISIBLE);
+        mAuth = FirebaseAuth.getInstance();
+        regButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            regButton.setVisibility(View.INVISIBLE);
+            loadingProgress.setVisibility(View.INVISIBLE);
+            final String email = userEmail.getText().toString();
+            final String password = userPassword.getText().toString();
+            final String password2 = userPassword2.getText().toString();
+            final String name = userName.getText().toString();
+
+
+            if ( email.isEmpty() || name.isEmpty() || password.isEmpty()  || !password.equals(password2)) {
+
+
+
+                showMessage("Va rugam completati toate campurile corect") ;
+                regButton.setVisibility(View.VISIBLE);
+                loadingProgress.setVisibility(View.INVISIBLE);
+
+
+
+
+            }
+            else {
+                // toate campurile sunt obligatorii si putem incepe inregistrarea
+                //metoda CreateUserAccount va trimite request sa se creeze un utilizator nou
+
+                CreateUserAccount(email,name,password);
+
+            }
+
+
+
+
+
+
+
+
+
+
+            }
+        });
 
         ImgUserPhoto = findViewById(R.id.regUserPhoto);
         ImgUserPhoto.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +106,26 @@ public class RegisterActivity extends AppCompatActivity {
                                             }
                                         }
         );
+    }
+
+    private void CreateUserAccount(String email, String name, String password) {
+
+        //aceasta metoda creaza conntul utilizatorului nou cu email specific user si parola
+
+
+
+
+
+    }
+
+    private void showMessage(String message) {
+
+        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_LONG).show();
+
+
+    }
+
+    private ProgressBar setProgressBarVisibility(int invisible) {
     }
 
     private void openGallery() {
