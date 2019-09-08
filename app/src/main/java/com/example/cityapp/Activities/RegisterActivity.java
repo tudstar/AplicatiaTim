@@ -1,5 +1,6 @@
 package com.example.cityapp.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -19,6 +20,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.cityapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -32,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressBar loadingProgress;
     private Button regButton;
 
-    private FirebaseAuth mAuth
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -50,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
 
             regButton.setVisibility(View.INVISIBLE);
             loadingProgress.setVisibility(View.INVISIBLE);
@@ -76,7 +80,25 @@ public class RegisterActivity extends AppCompatActivity {
                 // toate campurile sunt obligatorii si putem incepe inregistrarea
                 //metoda CreateUserAccount va trimite request sa se creeze un utilizator nou
 
-                CreateUserAccount(email,name,password);
+                mAuth.createUserWithEmailAndPassword(email,password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()})
+
+                            {
+                                showMessage("Cont Creat");
+                            }
+                            else
+                                {
+
+
+                                showMessage("Eroare Creare Cont" + .getException().getMessage());
+                                regButton.setVisibility(View.VISIBLE);
+                                loadingProgress.setVisibility(View.INVISIBLE);
+
+                            }
+                        })
 
             }
 
