@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
     }
-
+//hello
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -89,5 +89,5 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-
+//hello world, this is the image selector code
 
