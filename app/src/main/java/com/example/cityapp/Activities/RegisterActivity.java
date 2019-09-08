@@ -93,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 {
 
 
-                                showMessage("Eroare Creare Cont" + .getException().getMessage());
+                                showMessage("Eroare Creare Cont" + task.getException().getMessage());
                                 regButton.setVisibility(View.VISIBLE);
                                 loadingProgress.setVisibility(View.INVISIBLE);
 
@@ -134,7 +134,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         //aceasta metoda creaza conntul utilizatorului nou cu email specific user si parola
 
-
+mAuth.createUserWithEmailAndPassword(email,password)
+        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful())
+            }
+        })
 
 
 
