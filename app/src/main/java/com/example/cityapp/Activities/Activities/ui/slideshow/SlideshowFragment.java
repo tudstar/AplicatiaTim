@@ -12,7 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.cityapp.Activities.Activities.R;
+//import com.example.cityapp.Activities.Activities.R;
+import com.example.cityapp.R;
 
 public class SlideshowFragment extends Fragment {
 
