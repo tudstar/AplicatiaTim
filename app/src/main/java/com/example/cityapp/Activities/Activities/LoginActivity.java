@@ -40,7 +40,7 @@ private ImageView loginPhoto;
         butonLogin = findViewById(R.id.buttonLogin);
         loginProgress = findViewById(R.id.loginProgress);
         mAuth = FirebaseAuth.getInstance();
-        HomeActivity = new Intent(this,com.example.cityapp.Activities.Activities.HomeActivity.class);
+        HomeActivity = new Intent(this,com.example.cityapp.Activities.Activities.Home.class);
         loginPhoto = findViewById(R.id.loginPhoto);
         loginPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
